@@ -1,0 +1,106 @@
+/* General body styling */
+body {
+    background-color: #f7f8fc;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2b2f4c;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container */
+  .ainotes-wrapper {
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Main heading */
+  .ainotes-title {
+    text-align: center;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .ainotes-title span {
+    color: #d066f2;
+  }
+  
+  /* Subheading */
+  .ainotes-subtitle {
+    text-align: center;
+    color: #707070;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+  
+  /* File type cards section */
+  .ainotes-filetypes {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+  
+  .ainotes-filecard {
+    background: #fff;
+    padding: 20px 10px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #dcdcdc;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+  
+  .ainotes-filecard:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  }
+  
+  /* Upload section */
+  .ainotes-uploadbox {
+    background-color: #fce7fa;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+  }
+  
+  /* Upload button */
+  .ainotes-browsebtn {
+    background-color: #f24fd0;
+    border: none;
+    padding: 10px 24px;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-top: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .ainotes-browsebtn:hover {
+    background-color: #e13ac4;
+  }
+  
+  /* Format info */
+  .ainotes-formatnote {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  /* Footer note */
+  .ainotes-footnote {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 30px;
+    color: #6b6b6b;
+  }
+  
+  .ainotes-footnote b {
+    color: #2b2f4c;
+  }
+  

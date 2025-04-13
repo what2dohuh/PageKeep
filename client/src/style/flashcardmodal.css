@@ -1,0 +1,195 @@
+.flashcard-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.flashcard-modal {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.flashcard-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.flashcard-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+.flashcard-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.flashcard-input,
+.flashcard-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.flashcard-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f7f7f7;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #444;
+    transition: background 0.2s;
+}
+
+.flashcard-upload-label:hover {
+    background: #f0f0f0;
+}
+
+.flashcard-upload-label input {
+    display: none;
+}
+
+.flashcard-modal-footer {
+    margin-top: 16px;
+    text-align: right;
+}
+
+.flashcard-submit-btn {
+    background: #0984e3;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+}
+
+.flashcard-submit-btn:hover {
+    background: #077bd3;
+}
+.flashcard-modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 999;
+}
+
+.flashcard-modal {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    width: 450px;
+    max-width: 90%;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+.flashcard-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flashcard-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.flashcard-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.flashcard-input,
+.flashcard-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.drop-zone {
+    border: 2px dashed #bbb;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.drop-zone.active {
+    border-color: #4CAF50;
+    background-color: #f5fff5;
+}
+
+.flashcard-modal-footer {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.footer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+}
+
+.flashcard-submit-btn {
+    background-color: #222;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.flashcard-submit-btn:hover {
+    background-color: #333;
+}
+
+.green-btn {
+    background-color: #4CAF50 !important;
+}
+
+.blue-btn {
+    background-color: #2196F3 !important;
+}
+
+.secondary {
+    background-color: #888;
+}

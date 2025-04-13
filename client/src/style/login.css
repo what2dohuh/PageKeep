@@ -1,0 +1,129 @@
+.box1{
+    display: flex;
+    flex: 0.5;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 40vh;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 10px;
+}
+.box2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 10px;
+    padding: 10px;
+}
+.box2 img{
+    width: 60%;
+    height: 70%;
+}
+.containerr{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.box2 form{
+    margin: 10px;
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+}
+.box1 p{
+    font-size: 16px;
+    margin: 10px;
+    padding: 10px;
+    color: #7c7474d3;
+}
+.line{
+    width: 2px;
+    height: 100%;
+    background-color: #b5aaaa;
+}
+.box2 form input{
+    width: 90%;
+    background-color: #faf0e6;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #b5aaaa;
+    margin: 10px;
+}
+.box2 button{
+    background-color: #4c5ec0;
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #b5aaaa;
+    margin: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.box2 button:hover{
+    background-color: #000000;
+}
+.box2 a{
+    color: #6482b9;
+    text-decoration:none;
+}
+.box2 a:hover{
+    color: #4d86f0;
+}
+.box2 label{
+    font-size: 13px;
+    margin: 1px;
+    padding: 1px;
+    color: #7c7474d3;
+}
+.box2 h3{
+    font-size: 24px;
+    margin: 10px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #1a1919d3;
+}
+.login h2{
+    font-size: 28px;
+    margin: 20px 20px 20px 20px;
+    padding: 10px;
+    color:#0f0f0f;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+.btncre button{
+    background-color: #4c5dc000;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #b5aaaa;
+    margin: 10px;
+    cursor: pointer;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+.btncre  button:hover{
+    background-color: #31a39a;
+}
+.login{
+    text-align: center;
+}
+.para {
+    font-size: 16px;
+    color: #48535c;
+}

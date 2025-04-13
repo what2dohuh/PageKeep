@@ -1,0 +1,10 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+Link {
+    text-decoration: none; /* Removes underline */
+    color: inherit; /* Optionally, you can use this to inherit the color from the parent element */
+  }

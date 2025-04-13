@@ -1,0 +1,139 @@
+.navbar {
+    width: 100%;
+    height: 100px;
+    background-color: #fcfcfc ;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .navbar .left {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 150px;
+  }
+  
+  .navbar .left img {
+    width: 70px;
+  }
+  
+  .navbar .right {
+    flex: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .navbar a {
+    color: rgb(37, 35, 35);
+    text-decoration: none;
+    margin: 20px;
+  }
+  
+  .navbar .right button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .navbar .right svg {
+    font-size: 40px;
+  }
+  
+  .navbar #open {
+    padding-left: 0px;
+  }
+  .navbar #open img {
+    display: none;
+  }
+  
+  .navbar #close img {
+    display: inherit;
+  }
+  
+  .navbar #open .hiddenLinks {
+    display: inherit;
+    margin-left: 30px;
+  }
+  
+  .navbar #close .hiddenLinks {
+    display: none;
+  }
+  
+  .navbar #open a {
+    width: 70px;
+    margin: 5px;
+  }
+  .bold {
+    font-weight: bold;
+}
+.btnn:hover{
+  background-color: black;
+  color: #e9e6e3;
+}
+.btnn {
+  background-color: #B7F9E9;
+  color: #41403f;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.btnn a{
+  color: #faf0e6;
+  text-decoration:none;
+}
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #ccc;
+  margin-right: 10px;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  @media only screen and (max-width: 900px) {
+    .navbar .right a {
+      width: 70px;
+    }
+    .navbar .left {
+      padding-left: 50px;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .navbar .right a {
+      display: none;
+    }
+  
+    .navbar .right {
+      justify-content: flex-end;
+      padding-right: 50px;
+    }
+  
+    .navbar .right button {
+      display: inherit;
+    }
+  }
+  
+  @media only screen and (min-width: 600px) {
+    .navbar .right   button {
+      display: none;
+    }
+  
+    .hiddenLinks {
+      display: none;
+    }
+  }

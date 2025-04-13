@@ -1,0 +1,129 @@
+.quiz-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-modal {
+    background: white;
+    padding: 24px;
+    width: 500px;
+    max-width: 90%;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quiz-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-close-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.quiz-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.quiz-input,
+.quiz-textarea,
+.quiz-folder-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.quiz-folder-select {
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+.quiz-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.quiz-submit-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease-in-out;
+}
+
+.quiz-submit-btn.green {
+    background-color: #28a745;
+}
+
+.quiz-submit-btn:hover {
+    opacity: 0.9;
+}
+
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    color: #777;
+    font-size: 14px;
+}
+
+.drop-zone.active {
+    border-color: #007bff;
+    background-color: #f0f8ff;
+}
+
+.quiz-toggle {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+}
+
+.quiz-toggle-btn {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.quiz-toggle-btn.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
