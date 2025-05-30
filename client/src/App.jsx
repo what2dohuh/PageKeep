@@ -13,6 +13,8 @@ import YourNotes from "./pages/yourNotes";
 import Studylist from "./pages/studylist";
 import CreatePost from "./pages/StudenBlogPages/createPost";
 import Eachpost from "./pages/StudenBlogPages/eachpost";
+import FlashcardViewer from "./components/flashcardviewre";
+import ViewFlashcardFolders from "./components/viewflashcardfolder"
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
     <Route path="/folder/:folderId" element={<FolderView/>} />
     <Route path="/ainotes" element={<Ainotes/>} />
     <Route path="/studylist" element={<Studylist/>} />
+    <Route path="/view-flashcards" element={<ViewFlashcardFolders />} />
+    <Route path="/flashcards/:topic" element={<FlashcardViewer />} />
 
     <Route path="*" element={<Notfoundpage/>} />
     </Routes>

@@ -4,22 +4,21 @@ import {getFirestore} from "firebase/firestore"
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCTdBWDXgsy_e5USKj8_0Goj4G0pGov6vU",
+  apiKey: "",
 
-  authDomain: "blogit-35fab.firebaseapp.com",
+  authDomain: "",
 
-  projectId: "blogit-35fab",
+  projectId: "",
 
-  storageBucket: "blogit-35fab.appspot.com",
+  storageBucket: "",
 
-  messagingSenderId: "896394109486",
+  messagingSenderId: "",
 
-  appId: "1:896394109486:web:065fb42384d8b0adc875bf",
+  appId: "",
 
-  measurementId: "G-DTFXY5H0RF"
+  measurementId: ""
 
 };
-console.log(import.meta.env .VITE_APP_FIREBASE_API_KEY)
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

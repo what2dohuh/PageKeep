@@ -1,4 +1,4 @@
-import { Search, PlusCircle, Sparkles,FlaskConicalIcon, MessageSquare, Edit3, Folder, FileText, Star, View } from 'lucide-react';
+import { Search, PlusCircle, Sparkles,FlaskConicalIcon, MessageSquare, Edit3, Folder, FileText, Star, View, Eye } from 'lucide-react';
 import Sidebar from '../components/sidebar';
 import '../style/yournotes.css'; 
 import {  Link, useNavigate } from 'react-router-dom';
@@ -10,6 +10,8 @@ import FlashcardModal from '../components/Modal/flashcardmodal';
 import CreateQuizModal from '../components/Modal/createquiz';
 import { useUser } from '../contexAPI/userContex';
 import { useFolders } from '../contexAPI/folderContex';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../config/config_fire';
 const YourNotes = () => {
     const { user } = useUser();
     const [isModalOpen, setModalOpen] = useState(false);
@@ -18,6 +20,27 @@ const YourNotes = () => {
     const [IsQuizOpen, setISQuizOpen] = useState(false);
     const nav = useNavigate();
     const {myFolders}  = useFolders();
+
+    const [topics, setTopics] = useState([]);
+
+    useEffect(() => {
+        const fetchTopics = async () => {
+            try {
+                const snap = await getDocs(collection(db, 'flashcards'));
+                console.log("Snapshot size:", snap.size); 
+            
+                snap.forEach(doc => {
+                    console.log("Doc ID:", doc.id, "Data:", doc.data());
+                });
+        
+                const folders = snap.docs.map(doc => ({ id: doc.id }));
+                setTopics(folders);
+            } catch (error) {
+                console.error("Error fetching topics:", error);
+            }
+        };
+        fetchTopics();        
+    }, []);
 
     useEffect(() => {
             if (user) {
@@ -85,7 +108,24 @@ const YourNotes = () => {
                     <section className="recently-viewed">
                             <h3 className="section-subtitle">Flashcards You Created</h3>
                             <div className="viewed-cards">
-                                <div className="flashcard-card">
+                            {topics.map(topic => (
+                                console.log("Topic ID:", topics),
+                                <div className="flashcard-card" key={topic.id}>
+                                    <Folder size={20} color="white" />
+                                    <h4 className="card-title">{topic.id}</h4>
+                                    <p className="card-sub">Your flashcards</p>
+                                    <p className="card-docs">
+                                        <FileText size={14} style={{ marginRight: '4px' }} />
+                                        {topic.cardCount || 0} Flashcard{(topic.cardCount || 0) !== 1 ? 's' : ''} organized
+                                    </p>
+                                    <Link to={`/flashcards/${topic.id}`}>
+                                        <button className="follow-btn">
+                                            <View size={14} style={{ marginRight: '6px' }} /> View
+                                        </button>
+                                    </Link>
+                                </div>
+                            ))}
+                                {/* <div className="flashcard-card">
                                     <Folder size={20} color="white" />
                                     <h4 className="card-title">Operating Systems Flashcards</h4>
                                     <p className="card-sub">B.Tech • 2nd Year</p>
@@ -93,10 +133,14 @@ const YourNotes = () => {
                                         <FileText size={14} style={{ marginRight: '4px' }} />
                                         42 flashcards
                                     </p>
-                                    <button className="view-btn">
-                                        <Star size={14} style={{ marginRight: '6px' }} /> View Flashcards
+                                    <Link to="/view-flashcards">    
+                                    <button className="flashcard-submit-btn secondary">
+                                        <Eye size={16} style={{ marginRight: 6 }} />
+                                        View Flashcards
                                     </button>
-                                </div>
+                                </Link>
+
+                                </div> */}
                             </div>
                         </section>
                         

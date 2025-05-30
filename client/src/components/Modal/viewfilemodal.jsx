@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../../style/viewfilemodal.css';
 import { FaTimes } from 'react-icons/fa';
 import ReactMarkdown from 'react-markdown';
@@ -20,16 +20,32 @@ const formatRelativeTime = (date) => {
 };
 
 const ViewFileModal = ({ onClose ,fileData}) => {
-    const [flippedCards, setFlippedCards] = useState([]);
-    const toggleCard = (index) => {
-      setFlippedCards((prev) =>
-        prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
-      );
-    };
+ 
 
     const fileUrl = fileData?.fileUrl || 'https://example.com/sample.pdf'; 
-
-
+    const [chatMessages, setChatMessages] = useState([]);
+    const [userInput, setUserInput] = useState("");
+    
+    const handleSendMessage = () => {
+      if (!userInput.trim()) return;
+    
+      const newMessage = { sender: "user", text: userInput };
+      const botReply = {
+        sender: "ai",
+        text: "This is a placeholder response from the AI.",
+      };
+    
+      setChatMessages((prev) => [...prev, newMessage, botReply]);
+      setUserInput("");
+    };
+    
+    const chatRef = useRef(null);
+// Add this effect
+useEffect(() => {
+  if (chatRef.current) {
+    chatRef.current.scrollTop = chatRef.current.scrollHeight;
+  }
+}, [chatMessages]);
     return (
                     <div className="viewfile-modal-overlay">
                         <div className="viewfile-modal">
@@ -64,27 +80,29 @@ const ViewFileModal = ({ onClose ,fileData}) => {
                         <iframe src={fileUrl} title="PDF Preview" className="file-iframe" />
                     </div>
 
-                    {/* Right - Flashcards */}
-                
-                    <div className="flashcard-list">
-                    {fileData?.flashcards?.length > 0 ? (
-                      fileData.flashcards.map((fc, i) => (
-                        <div
-                          className={`flashcard-box ${flippedCards.includes(i) ? 'flipped' : ''}`}
-                          key={i}
-                          onClick={() => toggleCard(i)}
-                        >
-                          {!flippedCards.includes(i) ? (
-                            <div className="flashcard-front"><strong>Q:</strong> {fc.question}</div>
-                          ) : (
-                            <div className="flashcard-back"><strong>A:</strong> {fc.answer}</div>
-                          )}
-                        </div>
-                      ))
-                    ) : (
-                      <p>No flashcards available.</p>
-                    )}
-                    </div>
+                  
+               {/* Right - AI Chat */}
+                <div className="modal-section chat-section">
+                  <h3 className="chat-title">💬 Ask AI about this file</h3>
+                  <div className="chat-messages" ref={chatRef}>
+                    {chatMessages.map((msg, idx) => (
+                      <div key={idx} className={`chat-message ${msg.sender}`}>
+                        <div className="chat-bubble">{msg.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="chat-input-wrapper">
+                    <input
+                      type="text"
+                      placeholder="Ask something..."
+                      value={userInput}
+                      onChange={(e) => setUserInput(e.target.value)}
+                      onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+                    />
+                    <button onClick={handleSendMessage}>Send</button>
+                  </div>
+                </div>
+
 
                 </div>
             </div>

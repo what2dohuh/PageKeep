@@ -1,0 +1,18 @@
+.flashcard-viewer {
+    padding: 2rem;
+}
+.card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.flashcard-item {
+    background: #fff;
+    border-left: 4px solid #4f46e5;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.flashcard-item h4 {
+    margin-bottom: 0.5rem;
+}

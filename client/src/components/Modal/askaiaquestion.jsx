@@ -1,46 +1,42 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import '../../style/askaiaquestion.css';
 import { X } from 'lucide-react';
 
 const AskQuestionModal = ({ isOpen, onClose }) => {
     const [question, setQuestion] = useState('');
-    const [response, setResponse] = useState('');
+    const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
+    const chatEndRef = useRef(null);
 
-    const GEMINI_API_KEY = "AIzaSyCwNUqXGsgciYECrajlIvria36cD0WL12I"; // Replace this securely later
+    useEffect(() => {
+        if (chatEndRef.current) {
+            chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    }, [messages]);
 
     const handleSubmit = async () => {
-        if (!question.trim()) return;
+        const trimmed = question.trim();
+        if (!trimmed) return;
 
+        setMessages(prev => [...prev, { type: 'user', text: trimmed }]);
+        setQuestion('');
         setLoading(true);
-        setResponse('');
 
         try {
-            const res = await fetch(
-                "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" + GEMINI_API_KEY,
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        contents: [
-                            {
-                                parts: [{ text: question }],
-                                role: "user"
-                            }
-                        ]
-                    }),
-                }
-            );
+            const res = await fetch("http://localhost:3001/askai", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ text: trimmed })
+            });
 
             const data = await res.json();
-            const generatedText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
-            setResponse(generatedText);
+            setMessages(prev => [...prev, { type: 'ai', text: data.reply }]);
         } catch (error) {
-            console.error("Gemini API error:", error);
-            setResponse("❌ Error fetching response.");
+            console.error("API error:", error);
+            setMessages(prev => [...prev, { type: 'ai', text: "❌ Server error." }]);
         } finally {
             setLoading(false);
         }
@@ -50,32 +46,38 @@ const AskQuestionModal = ({ isOpen, onClose }) => {
 
     return (
         <div className="ask-modal-overlay">
-            <div className="ask-modal">
+            <div className="ask-modal-ai">
                 <div className="ask-modal-header">
-                    <h3>Ask a Question</h3>
+                    <h3>AI Chat</h3>
                     <button className="ask-close-btn" onClick={onClose}>
                         <X size={18} />
                     </button>
                 </div>
-                <div className="ask-modal-body">
-                    <textarea 
+
+                <div className="ask-modal-body chat-body">
+                    {messages.map((msg, idx) => (
+                        <div key={idx} className={`chat-bubble ${msg.type === 'user' ? 'user-msg' : 'ai-msg'}`}>
+                            {msg.text}
+                        </div>
+                    ))}
+                    <div ref={chatEndRef} />
+                </div>
+
+                <div className="ask-modal-footer chat-footer">
+                    <textarea
                         className="ask-textarea"
-                        rows="5"
-                        placeholder="Type your question here..."
+                        rows="2"
+                        placeholder="Ask something..."
                         value={question}
                         onChange={(e) => setQuestion(e.target.value)}
+                        onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSubmit()}
                     />
-                    <div className="ask-response-box">
-                        {loading ? (
-                            <p className="ask-loading-text">Generating response...</p>
-                        ) : (
-                            response && <p className="ask-response-text">{response}</p>
-                        )}
-                    </div>
-                </div>
-                <div className="ask-modal-footer">
-                    <button className="ask-submit-btn" onClick={handleSubmit}>
-                        Submit
+                    <button
+                        className="ask-submit-btn"
+                        onClick={handleSubmit}
+                        disabled={loading}
+                    >
+                        {loading ? "Thinking..." : "Send"}
                     </button>
                 </div>
             </div>
